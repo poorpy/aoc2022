@@ -3,9 +3,11 @@ use std::{env, fs};
 fn main() {
     let args: Vec<String> = env::args().collect();
     let filename: &str = &args[1];
-    let calories = read_calories(filename);
+    let mut calories = read_calories(filename);
+    calories.sort();
 
-    println!("max calories: {}", calories.iter().max().unwrap())
+    println!("max calories: {}", calories.iter().max().unwrap());
+    println!("top 3 sum: {}", calories.iter().rev().take(3).sum::<u64>());
 }
 
 fn read_calories(filename: &str) -> Vec<u64> {
