@@ -28,10 +28,17 @@ fn read_top(stacks: Vec<Vec<char>>) -> String {
 
 fn exec(mut stacks: Vec<Vec<char>>, moves: Vec<Move>) -> Vec<Vec<char>> {
     for m in moves {
+        let mut to_push: Vec<char> = Vec::new();
         for _ in 0..m.count {
-            let to_push = stacks[m.from].pop().unwrap();
-            stacks[m.to].push(to_push);
+            // part 1
+            // let to_push = stacks[m.from].pop().unwrap();
+            // stacks[m.to].push(to_push);
+
+            // part 2
+            to_push.push(stacks[m.from].pop().unwrap());
         }
+        // part 2
+        stacks[m.to].extend(to_push.into_iter().rev())
     }
 
     stacks
