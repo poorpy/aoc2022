@@ -41,7 +41,7 @@ fn read(filename: &str) -> impl Iterator<Item = String> {
     contents
         .lines()
         .filter(|l| !l.is_empty())
-        .map(|l| String::from(l))
+        .map(String::from)
         .collect::<Vec<String>>()
         .into_iter()
 }
